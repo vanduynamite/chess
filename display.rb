@@ -25,6 +25,7 @@ class Display
       puts "\n"
       LINES.times {print "  #{SPACER}#{empty_row(i)}\n"}
     end
+
     nil
 
   end
@@ -33,7 +34,7 @@ class Display
 
   def empty_row(row_num)
     b_sq = "#{SPACER} #{SPACER}".on_light_black
-    w_sq = "#{SPACER} #{SPACER}".on_light_white
+    w_sq = "#{SPACER} #{SPACER}".on_yellow
 
     return w_sq + b_sq + w_sq + b_sq + w_sq + b_sq + w_sq + b_sq if row_num.even?
     return b_sq + w_sq + b_sq + w_sq + b_sq + w_sq + b_sq + w_sq if row_num.odd?
@@ -56,15 +57,15 @@ class Display
     output = "#{SPACER} #{SPACER}" if piece == NullPiece.instance && [i,j] != cursor.cursor_pos
 
     # color the background according to the position it's on
-    output = output.on_light_white if (i + j).even?
+    output = output.on_yellow if (i + j).even?
     output = output.on_light_black if (i + j).odd?
 
     output
   end
 
-  SPACER = "    "
+  SPACER = "  "
   DUBSP = SPACER + SPACER
-  LINES = 2
+  LINES = 1
 
 end
 
