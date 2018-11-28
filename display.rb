@@ -13,6 +13,7 @@ class Display
   end
 
   def render
+    system('clear')
     puts "  #{DUBSP}A#{DUBSP}B#{DUBSP}C#{DUBSP}D#{DUBSP}E#{DUBSP}F#{DUBSP}G#{DUBSP}H\n\n"
 
     board.grid.each_with_index do |row, i|

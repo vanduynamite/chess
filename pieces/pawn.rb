@@ -38,7 +38,6 @@ class Pawn < Piece
   def side_attacks
     results = []
     possible = [[1, 1], [1, -1]]
-    # puts "Possible: #{possible}"
 
     possible.each do |pos|
       test_pos = [position[0] + pos[0] * forward_dir, position[1] + pos[1] * forward_dir]

@@ -3,6 +3,7 @@ class Piece
 
   attr_writer :position
   attr_reader :color, :inv_color, :board, :position, :selected_color, :back_color
+  attr_accessor :picked
 
   def initialize(color, board, pos)
     @color = color
@@ -12,6 +13,10 @@ class Piece
     @board = board
     @position = pos
     @picked = false
+  end
+
+  def has_moves?
+    !moves.empty?
   end
 
 end

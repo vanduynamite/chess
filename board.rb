@@ -11,12 +11,17 @@ class Board
 
   def [](pos)
     row, col = pos
-    rows[row][col]
+    grid[row][col]
   end
 
   def []=(pos, val)
     row, col = pos
-    self.rows[row][col] = val
+    self.grid[row][col] = val
+  end
+
+  def valid_start_pos?(pos)
+    piece = self[pos]
+    pos if piece.class != 'NullPiece' && piece.has_moves?
   end
 
   def valid_pos?(pos)
@@ -47,7 +52,7 @@ class Board
   end
 
   def find_king(color)
-    self.rows.each_with_index do |row, i|
+    self.grid.each_with_index do |row, i|
       row.each_with_index do |piece, j|
         return [i, j] if piece.is_a?(King) && piece.color == color
       end
@@ -93,7 +98,7 @@ private
   end
 
   def all_pieces(color)
-    self.rows.flatten.select {|piece| piece.color == color}
+    self.grid.flatten.select {|piece| piece.color == color}
   end
 
   def setup_rows

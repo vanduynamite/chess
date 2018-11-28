@@ -15,8 +15,6 @@ class Game
   def play
 
     until false
-      system('clear')
-
       display.render
       notify_players
       players[current_player].take_turn(display)
@@ -36,8 +34,11 @@ class Game
   end
 
   def swap_turns!
-    self.current_player = :black if self.current_player == :white
-    self.current_player = :white if self.current_player == :black
+    if self.current_player == :white
+      self.current_player = :black
+    else
+      self.current_player = :white
+    end
   end
 
   def create_players
